@@ -2296,7 +2296,6 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements
     }
 
     public void showAllContacts() {
-        setThreshold(0);
         dismissDropDownOnItemSelected(false);
         getHandler().postDelayed(new Runnable() {
             @Override
