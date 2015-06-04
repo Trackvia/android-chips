@@ -1409,6 +1409,11 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements
      */
     @Override
     protected void performFiltering(CharSequence text, int keyCode) {
+        if (TextUtils.isEmpty(text)) {
+            getFilter().filter("", this);
+            return;
+        }
+
         boolean isCompletedToken = isCompletedToken(text);
         if (enoughToFilter() && !isCompletedToken) {
             int end = getSelectionEnd();
@@ -2303,6 +2308,7 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements
                 setTextColor(getCurrentHintTextColor());
                 setText("Choose Contacts:");
                 setSelection(16);
+                performFiltering("", 0);
             }
         }, 500);
     }
